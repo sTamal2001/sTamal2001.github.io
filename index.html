@@ -184,23 +184,28 @@
     </section>
     <section class="contact" id="contact">
       <h2 class="heading">Contact <span>Me!</span></h2>
-      <form action="#">
+      <form action="#" onsubmit="sendEmail(); reset(); return false;">
         <div class="input-box">
-          <input type="text" placeholder="Full Name" name="" id="" />
-          <input type="email" placeholder="Email Address" name="" id="" />
+          <input type="text" placeholder="Full Name" name="" id="name" />
+          <input type="email" placeholder="Email Address" name="" id="email" />
         </div>
         <div class="input-box">
-          <input type="number" placeholder="Mobile Number" name="" id="" />
-          <input type="text" placeholder="Subject" name="" id="" />
+          <input
+            type="number"
+            placeholder="Mobile Number"
+            name=""
+            id="number"
+          />
+          <input type="text" placeholder="Subject" name="" id="subject" />
         </div>
         <textarea
           name=""
-          id=""
+          id="message"
           cols="30"
           rows="10"
           placeholder="Your Message"
         ></textarea>
-        <input type="submit" value="Send" class="btn" />
+        <input type="submit" value="Send" class="btn" id="btn" />
       </form>
     </section>
     <footer class="footer">
@@ -220,5 +225,47 @@
 
     <!-- custom JS -->
     <script src="script.js"></script>
+
+    <!-- SMTP Server setup -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var number = document.getElementById("number").value;
+        var subject = document.getElementById("subject").value;
+        var message = document.getElementById("message").value;
+        var body =
+          "name: " +
+          name +
+          "<br/> email: " +
+          email +
+          "<br/> number: " +
+          number +
+          "<br/> subject: " +
+          subject +
+          "<br/> message: " +
+          message;
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "stamal2001@gmail.com",
+          Password: "B120C314A35B33EFB865E3C46FF397094B74",
+          To: "stamal2001@hotmail.com",
+          From: "stamal2001@gmail.com",
+          Subject: "Contact From ",
+          Body:
+            "Name: " +
+            name +
+            "<br/> Email Address: " +
+            email +
+            "<br/>Mobile Number: " +
+            number +
+            "<br/> Subject: " +
+            subject +
+            "<br/>User Message: " +
+            message,
+        }).then((message) => alert(message));
+      }
+    </script>
   </body>
 </html>

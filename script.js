@@ -36,7 +36,7 @@ window.onscroll = () => {
 };
 
 // Scroll Revael
-ScrollReveal({ reset: true, distance: "80px", duration: 2000, delay: 200 });
+ScrollReveal({ reset: true, distance: "15px", duration: 2000, delay: 200 });
 ScrollReveal().reveal(".home-c,.heading", { origin: "top" });
 ScrollReveal().reveal(".home-img, .service-c, .protfolio-b, .contact form", {
   origin: "bottom",
